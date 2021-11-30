@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="sieve-of-erastosthenes">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../eclipse/jee-2021-03/Eclipse.app/Contents/Eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="11"/>
+    <property name="source" value="11"/>
+    <path id="sieve-of-erastosthenes.classpath">
+        <pathelement location="bin"/>
+    </path>
+    <path id="run.SieveOfEratosthenes.classpath">
+        <path refid="sieve-of-erastosthenes.classpath"/>
+    </path>
+	
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+	
+    <target depends="clean, build-project" name="build"/>
+	
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <classpath refid="sieve-of-erastosthenes.classpath"/>
+        </javac>
+    </target>
+	
+
+	
+    <target name="jar">
+        <mkdir dir="bin/jar"/>
+        <jar destfile="bin/jar/SieveOfEratosthenes.jar" basedir="bin">
+            <manifest>
+                <attribute name="Main-Class" value="project.SieveOfEratosthenes"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="test" depends = "jar">
+        <java jar="bin/jar/SieveOfEratosthenes.jar" fork="true"/>
+    </target>
+	
+</project>
