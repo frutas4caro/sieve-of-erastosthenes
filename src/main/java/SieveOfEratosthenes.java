@@ -12,7 +12,7 @@ public class SieveOfEratosthenes {
 	public static void main(String[] args) {
 		// running a quick test in the beginning
 		testProgram();
-		
+		/*		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
  
 		Integer input;
@@ -24,7 +24,7 @@ public class SieveOfEratosthenes {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+		*/
 	}
 	private static void testProgram() {
 		Integer testNum = 30;
