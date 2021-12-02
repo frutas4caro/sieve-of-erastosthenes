@@ -1,16 +1,12 @@
 pipeline{
 	agent { dockerfile true }
 	stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh 'docker build -t my-test-app .'
+                sh 'echo "TEST"'
             }
         }
-        stage('Run') {
-            steps {
-                sh 'docker run my-test-app'
-            }
-        }
+        
     }
 }       
 
